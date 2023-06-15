@@ -1,0 +1,111 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "projeto_pweb_padaria",
+    "dateExported": "2023-06-15T21:33:35.316Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "60ee4f3f-8c6e-4d80-b439-ed9951430eb8",
+            "name": "produtos",
+            "containerId": "",
+            "created": "2023-05-21T21:58:56.678Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "14f80a1c-ff39-41fb-9cb9-e0fda45bf306",
+            "name": "clientes",
+            "containerId": "",
+            "created": "2023-05-28T01:15:56.735Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a97f8c67-ddb3-48bd-a6a9-f2ac5b0b1a1f",
+            "name": "cestas",
+            "containerId": "",
+            "created": "2023-05-29T23:25:53.327Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "7f6e74d8-c81c-470e-a93f-8a6734c2c602",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "60ee4f3f-8c6e-4d80-b439-ed9951430eb8",
+            "name": "localhost:1000/produtos",
+            "url": "localhost:1000/produtos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-21T21:58:44.838Z",
+            "modified": "2023-05-21T21:59:01.420Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f7d5a570-0a69-4694-80b7-760a0c352a5e",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "14f80a1c-ff39-41fb-9cb9-e0fda45bf306",
+            "name": "get clientes",
+            "url": "localhost:1000/clientes/teste@teste.com",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-28T01:16:11.650Z",
+            "modified": "2023-06-15T21:20:22.897Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1ade9498-23e2-4132-864c-f486e7444f9a",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "14f80a1c-ff39-41fb-9cb9-e0fda45bf306",
+            "name": "post cliente",
+            "url": "localhost:1000/clientes",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-28T02:53:19.486Z",
+            "modified": "2023-06-15T21:05:42.094Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"cpf\": 99999999999,\n  \"email\": \"teste@teste.com\",\n  \"nome\": \"teste\",\n  \"senha\": \"teste\",\n  \"telefone\": 99999999999\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c95e7355-7944-4648-aa68-7eb70eb44992",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "a97f8c67-ddb3-48bd-a6a9-f2ac5b0b1a1f",
+            "name": "post cesta",
+            "url": "localhost:1000/cestas",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-05-29T23:26:03.260Z",
+            "modified": "2023-06-15T21:01:35.054Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"sessionid\": \"123e4567-e89b-12d3-a456-426614174002\",\n  \"codcliente\": 1,\n  \"codproduto\": 30,\n  \"quantidade\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "15f67627-2d36-4ea1-ae2d-eba472f2e828",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "a97f8c67-ddb3-48bd-a6a9-f2ac5b0b1a1f",
+            "name": "get cesta",
+            "url": "localhost:1000/cestas/123e4567-e89b-12d3-a456-426614174001",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-05-29T23:50:53.479Z",
+            "modified": "2023-06-15T21:33:06.731Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
