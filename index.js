@@ -1,8 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import cors from "cors";
 const app = express();
-app.use(express.json());
+app.use(
+    express.json(),
+    cors({
+        origin: "*",
+    })
+);
 import axios from "axios";
 
 const { DB_PRODUTOS_URL, DB_CLIENTES_URL, DB_CESTAS_URL, SERVER_PORT } =
@@ -14,10 +20,26 @@ app.get("/produtos", async (req, res) => {
     let produtos = {};
     produtosArray.forEach((produto) => {
         delete produto.links;
-        produtos[produto.descricao.toLowerCase().replaceAll(/\s/g, "")] =
-            produto;
+        produtos[produto.codigo] = produto;
+        delete produto.codigo;
     });
     res.status(200).send(produtos);
+});
+
+app.get("/produtos/:codigo", async (req, res) => {
+    const codigo = req.params.codigo;
+    try {
+        const produto = (await axios.get(DB_PRODUTOS_URL + codigo)).data;
+        delete produto.links;
+        delete produto.codigo;
+        res.status(200).send(produto);
+    } catch (erro) {
+        if (erro.response) {
+            res.status(erro.response.status).send({
+                msg: "Cliente não existe",
+            });
+        }
+    }
 });
 
 // app.post("/produtos", (req, res) => {
