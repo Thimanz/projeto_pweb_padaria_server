@@ -10,9 +10,16 @@ app.use(
     })
 );
 import axios from "axios";
+import nodemailer from "nodemailer";
 
-const { DB_PRODUTOS_URL, DB_CLIENTES_URL, DB_CESTAS_URL, SERVER_PORT } =
-    process.env;
+const {
+    DB_PRODUTOS_URL,
+    DB_CLIENTES_URL,
+    DB_CESTAS_URL,
+    SERVER_PORT,
+    EMAIL,
+    SENHA,
+} = process.env;
 
 app.get("/produtos", async (req, res) => {
     const database = (await axios.get(DB_PRODUTOS_URL)).data;
@@ -125,6 +132,40 @@ app.get("/session/:codigoCliente", async (req, res) => {
         res.status(200).send({ sessionId });
     } else {
         res.status(404).send({ msg: "Sessão não encontrada" });
+    }
+});
+
+app.post("/email", (req, res) => {
+    const dadosEmail = req.body;
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: EMAIL,
+            pass: SENHA,
+        },
+    });
+    try {
+        const mailOptions = {
+            from: EMAIL,
+            to: dadosEmail.email,
+            subject: `Seu cadastro foi concluído, ${dadosEmail.nome}`,
+            text: `Olá ${dadosEmail.nome}, seu cadastro na Padoca foi concluído.\nSua senha é: ${dadosEmail.senha}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info);
+            }
+        });
+        res.status(201).send({ msg: "Email enviado" });
+    } catch (erro) {
+        if (erro.response) {
+            res.status(erro.response.status).send({
+                msg: "Erro ao enviar email",
+            });
+        }
     }
 });
 
