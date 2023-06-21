@@ -113,6 +113,21 @@ app.get("/cestas/:sessionId", async (req, res) => {
     res.status(200).send(cesta);
 });
 
+// sessão do usuario
+app.get("/session/:codigoCliente", async (req, res) => {
+    const database = (
+        await axios.get(
+            DB_CESTAS_URL + `?q={"codcliente": ${req.params.codigoCliente}}`
+        )
+    ).data;
+    if (database.count) {
+        const sessionId = database.items[0].sessionid;
+        res.status(200).send({ sessionId });
+    } else {
+        res.status(404).send({ msg: "Sessão não encontrada" });
+    }
+});
+
 app.listen(SERVER_PORT, () => {
     console.log(`Porta ${SERVER_PORT} inicializada`);
 });
