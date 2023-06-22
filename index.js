@@ -43,7 +43,32 @@ app.get("/produtos/:codigo", async (req, res) => {
     } catch (erro) {
         if (erro.response) {
             res.status(erro.response.status).send({
-                msg: "Cliente não existe",
+                msg: "Produto não existe",
+            });
+        }
+    }
+});
+
+app.get("/produtos-busca/:descricao", async (req, res) => {
+    const descricao = req.params.descricao;
+    let produtos = {};
+    try {
+        const produtosArray = (
+            await axios.get(
+                DB_PRODUTOS_URL +
+                    `?q={"descricao" : { "$instr" : "${descricao}" }}`
+            )
+        ).data.items;
+        produtosArray.forEach((produto) => {
+            delete produto.links;
+            produtos[produto.codigo] = produto;
+            delete produto.codigo;
+        });
+        res.status(200).send(produtos);
+    } catch (erro) {
+        if (erro.response) {
+            res.status(erro.response.status).send({
+                msg: "Produto não existe",
             });
         }
     }
