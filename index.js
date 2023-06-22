@@ -117,6 +117,9 @@ app.post("/cestas", async (req, res) => {
     const cesta = req.body;
     cesta["valorUnitario"] = 0;
     cesta["valorTotal"] = 0;
+    if (!cesta.codcliente) {
+        cesta["codcliente"] = null;
+    }
     try {
         const respostaDB = (await axios.post(DB_CESTAS_URL, cesta)).data;
         delete respostaDB.links;
@@ -131,18 +134,16 @@ app.post("/cestas", async (req, res) => {
 });
 
 app.get("/cestas/:sessionId", async (req, res) => {
-    const database = (await axios.get(DB_CESTAS_URL)).data;
+    const database = (
+        await axios.get(
+            DB_CESTAS_URL + `?q={"sessionid" : "${req.params.sessionId}" }`
+        )
+    ).data;
     const cestasArray = database.items;
-    let cestas = {};
     cestasArray.forEach((item) => {
         delete item.links;
-        const itens = cestas[item.sessionid] || [];
-        itens.push(item);
-        cestas[item.sessionid] = itens;
-        delete item.sessionid;
     });
-    const cesta = cestas[req.params.sessionId] || [];
-    res.status(200).send(cesta);
+    res.status(200).send(cestasArray);
 });
 
 // sessão do usuario

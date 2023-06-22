@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "projeto_pweb_padaria",
-    "dateExported": "2023-06-15T21:33:35.316Z",
+    "dateExported": "2023-06-22T19:06:06.677Z",
     "version": "1.1",
     "folders": [
         {
@@ -24,6 +24,20 @@
             "containerId": "",
             "created": "2023-05-29T23:25:53.327Z",
             "sortNum": 30000
+        },
+        {
+            "_id": "42df2bbe-42a8-4ab8-86df-7dd6ad122421",
+            "name": "session",
+            "containerId": "",
+            "created": "2023-06-21T15:40:56.151Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "23c72c6e-d494-44d6-8ca5-6f1d3f89a106",
+            "name": "email",
+            "containerId": "",
+            "created": "2023-06-21T22:36:23.540Z",
+            "sortNum": 50000
         }
     ],
     "requests": [
@@ -31,7 +45,7 @@
             "_id": "7f6e74d8-c81c-470e-a93f-8a6734c2c602",
             "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
             "containerId": "60ee4f3f-8c6e-4d80-b439-ed9951430eb8",
-            "name": "localhost:1000/produtos",
+            "name": "get produtos",
             "url": "localhost:1000/produtos",
             "method": "GET",
             "sortNum": 10000,
@@ -83,12 +97,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2023-05-29T23:26:03.260Z",
-            "modified": "2023-06-15T21:01:35.054Z",
+            "modified": "2023-06-22T18:07:24.650Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"sessionid\": \"123e4567-e89b-12d3-a456-426614174002\",\n  \"codcliente\": 1,\n  \"codproduto\": 30,\n  \"quantidade\": 6\n}",
+                "raw": "{\n  \"sessionId\": \"123e4567-e89b-12d3-a456-426614174002\",\n  \"codProduto\": 1,\n  \"codcliente\": 1,\n  \"quantidade\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -98,11 +112,72 @@
             "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
             "containerId": "a97f8c67-ddb3-48bd-a6a9-f2ac5b0b1a1f",
             "name": "get cesta",
-            "url": "localhost:1000/cestas/123e4567-e89b-12d3-a456-426614174001",
+            "url": "localhost:1000/cestas/123e4567-e89b-12d3-a456-426614174002",
             "method": "GET",
             "sortNum": 50000,
             "created": "2023-05-29T23:50:53.479Z",
-            "modified": "2023-06-15T21:33:06.731Z",
+            "modified": "2023-06-22T15:19:47.379Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "12b199f8-4f49-4dc0-bdc6-93986776b664",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "60ee4f3f-8c6e-4d80-b439-ed9951430eb8",
+            "name": "get produto",
+            "url": "localhost:1000/produtos/10",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-06-18T21:03:06.834Z",
+            "modified": "2023-06-18T21:07:19.396Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b677e205-5e6b-4f94-a9c7-4e38836dd514",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "42df2bbe-42a8-4ab8-86df-7dd6ad122421",
+            "name": "get session",
+            "url": "localhost:1000/session/1",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-06-21T15:41:15.830Z",
+            "modified": "2023-06-21T15:49:11.978Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0511fdf0-3730-426c-b1f0-ad03872f861e",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "23c72c6e-d494-44d6-8ca5-6f1d3f89a106",
+            "name": "post email",
+            "url": "localhost:1000/email",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-06-21T22:36:31.648Z",
+            "modified": "2023-06-21T22:40:42.131Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"cleitin\",\n  \"email\": \"emailprojetonorotn@gmail.com\",\n  \"senha\": \"teste\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a0cde4ea-c4ab-414d-8423-e2b226c30812",
+            "colId": "8ccb5d0c-afd3-48e6-af22-20ffd410a9fe",
+            "containerId": "60ee4f3f-8c6e-4d80-b439-ed9951430eb8",
+            "name": "get produtos busca",
+            "url": "localhost:1000/produtos-busca/",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-06-22T01:41:05.048Z",
+            "modified": "2023-06-22T05:44:10.241Z",
             "headers": [],
             "params": [],
             "tests": []
